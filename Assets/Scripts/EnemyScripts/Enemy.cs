@@ -11,9 +11,9 @@ public class Enemy : MonoBehaviour
 
     public int score = 10;
 
-    private Bounds b;
+    protected Bounds bounds;
 
-    public Vector3 p
+    public Vector3 position
     {
         get { return (this.transform.position); }
 
@@ -24,14 +24,14 @@ public class Enemy : MonoBehaviour
     //Pobiera pozycję obiektu, zmiejsza ją w osi Y i przypisuje do pos
     public virtual void Move()
     {
-        Vector3 tempPosition = p;
+        Vector3 tempPosition = position;
         tempPosition.y -= speed * Time.deltaTime;
-        p = tempPosition;
+        position = tempPosition;
     }
 
     void Awake()
     {
-        b = GetComponent<Bounds>();
+        bounds = GetComponent<Bounds>();
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
 
         //Czy obiekt przekroczył dolną granicę ekranu. Jeżeli przekroczył, zostaje zniszczony
-        if (b != null && b.offDown)
+        if (bounds != null && bounds.offDown)
         {
          
                 Destroy(gameObject);

@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 8741767004771740023}
   - component: {fileID: 2089211539646878902}
   - component: {fileID: -8338726848803988328}
+  - component: {fileID: -4848334956959934164}
   m_Layer: 9
   m_Name: Enemy3
   m_TagString: Enemy
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5fdfdfd6669b2488ce67e40d35b2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: -1
+  radius: 3
   keepOnScreen: 0
   height: 0
   width: 0
@@ -272,3 +273,24 @@ MonoBehaviour:
   offUp: 0
   offDown: 0
   isPresentOnScreen: 1
+--- !u!114 &-4848334956959934164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741767004771740021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869b53f2f59d47c4fbde5a81b4115c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  rateofFire: 0.4
+  health: 10
+  score: 10
+  eccentricity: 0.5
+  howLong: 8
+  posStart: {x: 0, y: 0, z: 0}
+  posEnd: {x: 0, y: 0, z: 0}
+  birthTime: 0

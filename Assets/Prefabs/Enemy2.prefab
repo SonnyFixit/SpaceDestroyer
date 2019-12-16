@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 2504648625921210839}
   - component: {fileID: -6235611787664442884}
   - component: {fileID: 581632821477905613}
+  - component: {fileID: 6208907523604916999}
   m_Layer: 9
   m_Name: Enemy2
   m_TagString: Enemy
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6310e4f84ed4940956ffc68de03c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
+  speed: 25
   rateofFire: 0.4
   health: 10
   score: 10
@@ -181,6 +182,25 @@ MonoBehaviour:
   offUp: 0
   offDown: 0
   isPresentOnScreen: 1
+--- !u!114 &6208907523604916999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504648625921210857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229260a6b3babf641a30ea7f3610e3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  rateofFire: 0.4
+  health: 10
+  score: 10
+  waveWidth: 4
+  rotationY: 45
+  frequency: 3
 --- !u!1 &2504648626425019969
 GameObject:
   m_ObjectHideFlags: 0

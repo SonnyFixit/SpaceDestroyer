@@ -7,8 +7,6 @@ public class Projectiles : MonoBehaviour
 
     private Bounds b;
 
-
-
     private void Awake()
     {
         b = GetComponent < Bounds>();
