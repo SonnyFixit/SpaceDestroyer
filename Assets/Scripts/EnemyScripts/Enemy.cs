@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Pobiera pozycję obiektu, zmiejsza ją w osi Y i przypisuje do pos
+    //Pobiera pozycję obiektu, zmiejsza ją w osi Y i przypisuje do position
     public virtual void Move()
     {
         Vector3 tempPosition = position;

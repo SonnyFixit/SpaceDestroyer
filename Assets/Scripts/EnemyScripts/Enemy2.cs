@@ -27,7 +27,7 @@ public class Enemy2 : Enemy
         birthTime = Time.time;
 
 
-        //Przypisuje początkową wartość poożenia statku wroga
+        //Przypisuje początkową wartość położenia statku wroga
         startPosX = position.x;
 
        
@@ -39,7 +39,7 @@ public class Enemy2 : Enemy
     public override void Move()
     {
 
-        //Obsługuje przemieszczanie się w kierunku pionowym
+        //Obsługuje przemieszczanie się w pionie
         base.Move();
 
         Vector3 tempP = position;
