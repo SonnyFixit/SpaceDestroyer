@@ -7,6 +7,8 @@ public class HeroShip : MonoBehaviour
 
     static public HeroShip HS; // Singleton
 
+   
+
     [SerializeField] // Żeby pokazać w inspektorze, tymczasowo
     private float _shield = 1;
 
@@ -19,9 +21,17 @@ public class HeroShip : MonoBehaviour
     public GameObject projectilePrefab;
     public float projectileSpeed = 50f;
 
+    public float dashSpeed = 5f;
+    float dashTime = 0.2f;
+    public float dashStart = 0.1f;
+    byte directionOfDash;
 
+    public float shipSpeed = 35f;
 
-    public float shipSpeed = 35;
+    float enginePower = 3f;
+    float maxEnginePower = 3f;
+
+    bool fullSpeedOn;
 
     //Przechowuje referencję do obiektu gry, który ostatnio uruchomił wyzwalacz
     private GameObject lastTrigger = null;
@@ -42,6 +52,8 @@ public class HeroShip : MonoBehaviour
         }
 
     }
+
+   
 
     // Update is called once per frame
     void Update()
@@ -65,6 +77,83 @@ public class HeroShip : MonoBehaviour
         {
             Fire();
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+           
+            fullSpeedOn = true;
+
+        } else
+        {
+            
+            fullSpeedOn = false;
+        }
+
+        if (fullSpeedOn == true)
+        {
+            shipSpeed = 60f;
+            enginePower -= Time.deltaTime;
+
+            if (enginePower <= 0)
+            {
+                enginePower = 0;
+                fullSpeedOn = false;
+            }
+        } else if (enginePower < maxEnginePower)
+        {
+            enginePower += Time.deltaTime;
+        }
+
+        if (fullSpeedOn == false)
+        {
+            shipSpeed = 20;
+        }
+
+        if (directionOfDash == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                directionOfDash = 1;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                directionOfDash = 2;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                directionOfDash = 3;
+            }
+        }
+
+        else
+        {
+            if (dashTime <= 0)
+            {
+                directionOfDash = 0;
+                dashTime = dashStart;
+                
+
+            } else
+            {
+                dashTime -= Time.deltaTime;
+
+                if (directionOfDash == 1)
+                {
+                    transform.position = transform.position + Vector3.left * dashSpeed;
+                }
+                else if (directionOfDash == 2)
+                {
+                    transform.position = transform.position + Vector3.right * dashSpeed;
+                }
+                else if (directionOfDash == 3)
+                {
+                    transform.position = transform.position + Vector3.up * dashSpeed;
+                }
+            }
+        }
+
 
 
     }
