@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
+   
 
     static public Main C;
 
@@ -68,6 +69,7 @@ public class Main : MonoBehaviour
     public void Restart()
     {
         //Wczytuje ponownie scenę, resetując grę
+        
         SceneManager.LoadScene("SampleScene");
     }
 

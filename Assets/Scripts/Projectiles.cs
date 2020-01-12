@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Projectiles : MonoBehaviour
 {
+    
 
     private Bounds b;
 
     private void Awake()
     {
-        b = GetComponent < Bounds>();
+        b = GetComponent<Bounds>();
     }
+
+    
 
 
 
@@ -25,4 +29,7 @@ public class Projectiles : MonoBehaviour
             Destroy(gameObject);
         }
     }
-}
+
+   
+    }
+

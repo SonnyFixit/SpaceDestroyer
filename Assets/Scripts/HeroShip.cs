@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class HeroShip : MonoBehaviour
 {
 
-    static public HeroShip HS; // Singleton
+    AudioSource blasterSound;
+    public AudioClip powerUpSound;
+    public AudioClip shieldsHit;
+    public AudioClip boom;
 
-   
+    private int score;
+
+    public Text scoreBox;
+
+    static public HeroShip HS; // Singleton;
 
     [SerializeField] // Żeby pokazać w inspektorze, tymczasowo
     private float _shield = 1;
@@ -53,11 +62,25 @@ public class HeroShip : MonoBehaviour
 
     }
 
-   
+
+    private void Start()
+    {
+
+        blasterSound = GetComponent<AudioSource>();
+        
+
+        GameObject scoreB = GameObject.Find("PlayerScore");
+        scoreBox = scoreB.GetComponent<Text>();
+        scoreBox.text = "0";
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
+
+        UpdateScore();
 
         //Uzyskiwanie informacji
 
@@ -164,6 +187,10 @@ public class HeroShip : MonoBehaviour
         proj.transform.position = transform.position;
         Rigidbody rb = proj.GetComponent<Rigidbody>();
         rb.velocity = Vector3.up * projectileSpeed;
+
+        blasterSound.Play();
+
+
     }
 
     void OnTriggerEnter(Collider o)
@@ -186,9 +213,20 @@ public class HeroShip : MonoBehaviour
         if (go.tag == "Enemy")
         {
             Shield--; //Jeżeli uderzył, poziom tarczy spada o 1
+            AudioSource.PlayClipAtPoint(shieldsHit, transform.position, 1f);
             Destroy(go); // Wróg zostaje zniszczony
 
+           
+
         }
+
+        if (go.tag == "PowerUps")
+        {
+            Shield++;
+            AudioSource.PlayClipAtPoint(powerUpSound, transform.position, 1f);
+            Destroy(go);
+        }
+
 
 
     }
@@ -199,6 +237,8 @@ public class HeroShip : MonoBehaviour
             set {_shield = Mathf.Min(value, 4);
                 if (value < 0)
                 {
+
+                AudioSource.PlayClipAtPoint(boom, transform.position, 1f);
 
                 Destroy(this.gameObject);
 
@@ -214,5 +254,24 @@ public class HeroShip : MonoBehaviour
 
             }
         }
+
+
+    public void AddScore(int scoreValue)
+    {
+        score += scoreValue;
+        UpdateScore();
     }
+
+    public void UpdateScore()
+    {
+        scoreBox.text = "Player score: " + score.ToString();
+
+        if (score > ScoreManager.highScore)
+
+        {
+            ScoreManager.highScore = score;
+        }
+    }
+
+}
 

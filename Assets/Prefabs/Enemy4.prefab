@@ -250,10 +250,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6310e4f84ed4940956ffc68de03c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionSound: {fileID: 8300000, guid: ce901369ef02dde4cb22051d0d00ed96, type: 3}
+  s: 200
   speed: 15
   rateofFire: 0.4
   health: 30
-  score: 30
 --- !u!114 &1809739486410711507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +288,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e17d51eecf5224289aa8a5f79b029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionSound: {fileID: 8300000, guid: ce901369ef02dde4cb22051d0d00ed96, type: 3}
+  s: 200
+  speed: 20
+  rateofFire: 0.4
+  health: 10
+  life: 5
+  birthTime: 0
+  turnPoints: []
 --- !u!1 &3671906266116591006
 GameObject:
   m_ObjectHideFlags: 0

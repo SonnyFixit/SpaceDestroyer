@@ -5,11 +5,18 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
+    public AudioClip explosionSound; 
+   
+
+    public int s = 200;
+
     public float speed = 20f;
     public float rateofFire = 0.4f;
     public float health = 10f;
 
-    public int score = 10;
+    private HeroShip heroShip;
+
+
 
     protected Bounds bounds;
 
@@ -34,9 +41,29 @@ public class Enemy : MonoBehaviour
         bounds = GetComponent<Bounds>();
     }
 
+
+
+    private void Start()
+    {
+
+        ;
+
+        GameObject heroShipObject = GameObject.FindWithTag("Hero");
+        if (heroShipObject != null)
+        {
+            heroShip = heroShipObject.GetComponent<HeroShip>();
+        }
+
+
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+
+        
+
         Move();
 
 
@@ -44,9 +71,9 @@ public class Enemy : MonoBehaviour
         //Czy obiekt przekroczył dolną granicę ekranu. Jeżeli przekroczył, zostaje zniszczony
         if (bounds != null && bounds.offDown)
         {
-         
-                Destroy(gameObject);
-            
+
+            Destroy(gameObject);
+
         }
 
     }
@@ -61,8 +88,22 @@ public class Enemy : MonoBehaviour
 
         if (o.tag == "HeroProjectiles")
         {
+
+            AudioSource.PlayClipAtPoint(explosionSound, transform.position, 1f);
+
             Destroy(o); //Niszczy pocisk
             Destroy(gameObject); //Zniszczy statek wroga
+
+
+
+            heroShip.AddScore(s);
+
+
         }
+
+        
+
+
     }
 }
+
